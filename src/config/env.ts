@@ -16,5 +16,6 @@ export const env = {
     app: {
         name: getOsEnv("APP_NAME"),
         port: process.env.PORT ?? getOsEnv("APP_PORT"),
+        routePrefix: getOsEnv("APP_ROUTE_PREFIX"),
     },
 };

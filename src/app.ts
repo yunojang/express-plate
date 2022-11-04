@@ -1,6 +1,7 @@
 import express from "express";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
+import { env } from "./config/env";
 
 import router from "./routes/app";
 
@@ -17,6 +18,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 // rest api route
-app.use("/app", router);
+app.use(env.app.routePrefix, router);
 
 export default app;

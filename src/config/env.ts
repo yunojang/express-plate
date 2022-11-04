@@ -15,6 +15,6 @@ export const env = {
     isDevelopment: process.env.NODE_ENV === "development",
     app: {
         name: getOsEnv("APP_NAME"),
-        port: getOsEnv(process.env.PORT ?? "APP_NAME"),
+        port: process.env.PORT ?? getOsEnv("APP_PORT"),
     },
 };

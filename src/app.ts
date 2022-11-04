@@ -2,6 +2,8 @@ import express from "express";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 
+import router from "./routes/app";
+
 const app = express();
 // logger
 
@@ -15,6 +17,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 // rest api route
-// app.use('/app', route)
+app.use("/app", router);
 
 export default app;

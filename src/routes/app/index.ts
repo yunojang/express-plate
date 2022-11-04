@@ -27,3 +27,5 @@ addRouts(commonRoutes);
 if (env.isDevelopment) {
     addRouts(devRoutes);
 }
+
+export default router;

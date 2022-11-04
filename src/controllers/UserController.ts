@@ -1,6 +1,7 @@
-import { Length } from "class-validator";
+import { Handler } from "express";
 
-class BaseUser {
-    @Length(3, 10)
-    name?: string;
-}
+export const createUser: Handler = (req, res, next) => {
+    // call createuser service
+
+    return res.send(req.body);
+};

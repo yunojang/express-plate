@@ -1,7 +1,7 @@
 import express from "express";
 import validate from "@/middlewares/validate";
 
-import { createUser } from "@/controllers/userController";
+import { createUser } from "@/controllers/userControllers";
 import { CraeteUserBody } from "@/validations/user";
 
 const userRouter = express.Router();

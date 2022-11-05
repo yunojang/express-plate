@@ -18,6 +18,8 @@
         "no-console": "off",
         "max-classes-per-file": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "func-names": "off",
+        "no-plusplus": "off",
         "prettier/prettier": [
             "error",
             {

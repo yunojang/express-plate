@@ -18,4 +18,12 @@ export const env = {
         port: process.env.PORT ?? getOsEnv("APP_PORT"),
         routePrefix: getOsEnv("APP_ROUTE_PREFIX"),
     },
+    jwt: {
+        secret: getOsEnv("JWT_SECRET"),
+    },
+    db: {
+        type: getOsEnv("TYPEORM_CONNECTION"),
+        database: getOsEnv("TYPEORM_DATABASE"),
+        logging: getOsEnv("TYPEORM_LOGGING"),
+    },
 };

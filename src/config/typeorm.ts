@@ -2,7 +2,7 @@ import { DataSource, DataSourceOptions } from "typeorm";
 import { env } from "./env";
 
 const {
-    db: { type, database, logging },
+    db: { type, url },
     app: {
         dirs: { entities },
     },
@@ -10,9 +10,11 @@ const {
 
 const options: DataSourceOptions = {
     type: type as any,
-    database,
-    logging: logging as any,
+    url,
     entities,
+    logging: true,
+    useNewUrlParser: true,
+    synchronize: true,
 };
 
 export const AppDataSource = new DataSource(options);

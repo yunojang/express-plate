@@ -9,3 +9,6 @@ dist
 
 # code setting
 .vscode
+
+# env
+.env

@@ -26,7 +26,8 @@ export const env = {
     },
     db: {
         type: getOsEnv("TYPEORM_CONNECTION"),
-        database: getOsEnv("TYPEORM_DATABASE"),
-        logging: getOsEnv("TYPEORM_LOGGING"),
+        url: getOsEnv("TYPEORM_URL"),
+        // database: getOsEnv("TYPEORM_DATABASE"),
+        // logging: getOsEnv("TYPEORM_LOGGING"),
     },
 };

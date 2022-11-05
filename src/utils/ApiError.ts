@@ -6,7 +6,7 @@ const getErrorMessage = (errors: ValidationError[]): string => {
     return errors
         .map(
             ({ property, constraints }) =>
-                `[${property}]: ${
+                `[${property}] ${
                     constraints ? Object.values(constraints).join(" / ") : "?"
                 }`
         )
@@ -17,5 +17,6 @@ export default class ApiError extends Error {
     constructor(errors: ValidationError[]) {
         const msg = getErrorMessage(errors);
         super(msg);
+        this.name = "[ApiError] Bad Request";
     }
 }

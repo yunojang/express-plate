@@ -4,14 +4,14 @@ import { StatusCodes } from "http-status-codes";
 
 import ApiError from "@/utils/ApiError";
 
-type ContentLocation = "body" | "params" | "query";
+type EntryLocation = "body" | "params" | "query";
 
-// middle ware
 const validate =
-    (Schema: { new (): any }, content: ContentLocation = "body"): Handler =>
+    (Schema: { new (): any }, entry: EntryLocation = "body"): Handler =>
     (req, res, next) => {
         const instance = new Schema();
-        Object.entries(req[content]).forEach(([k, v]) => {
+
+        Object.entries(req[entry]).forEach(([k, v]) => {
             instance[k] = v;
         });
 
@@ -20,7 +20,6 @@ const validate =
                 res.statusCode = StatusCodes.BAD_REQUEST;
                 return next(new ApiError(errors));
             }
-
             return next();
         });
     };

@@ -1,10 +1,10 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
-    @PrimaryColumn("uuid")
-    public id!: string;
+    @PrimaryGeneratedColumn("uuid")
+    id!: string;
 
     @IsNotEmpty()
     @Column()

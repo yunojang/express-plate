@@ -10,3 +10,7 @@ export const create = async (user: User): Promise<User> => {
 // export const findOne = (id: string): Promise<User> => {
 //     console.log("Find one user");
 // };
+
+export const getUserByEmail = async (email: string) => {
+    return userRepository.findOneBy({ email });
+};

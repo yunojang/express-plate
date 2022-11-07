@@ -1,6 +1,7 @@
 import express from "express";
 import helmet from "helmet";
 import passport from "passport";
+import cors from "cors";
 
 import { env } from "./config/env";
 
@@ -12,6 +13,10 @@ const app = express();
 
 // http security
 app.use(helmet());
+
+// cors
+app.use(cors());
+app.options("*", cors());
 
 // jwt passport
 passport.use("jwt", jwtStrategy);

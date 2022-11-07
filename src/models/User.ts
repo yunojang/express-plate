@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import {
     Column,
     Entity,
@@ -8,7 +9,7 @@ import {
 @Entity()
 export class User {
     @ObjectIdColumn()
-    id!: string;
+    id!: ObjectId;
 
     @Column()
     email?: string;

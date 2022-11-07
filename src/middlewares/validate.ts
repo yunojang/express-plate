@@ -17,7 +17,7 @@ const validate =
 
         classValidate(instance).then((errors) => {
             if (errors.length > 0) {
-                res.statusCode = StatusCodes.BAD_REQUEST;
+                res.status(StatusCodes.BAD_REQUEST);
                 return next(new ApiError(errors));
             }
 

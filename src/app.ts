@@ -1,10 +1,11 @@
 import express from "express";
 import helmet from "helmet";
-// import cookieParser from "cookie-parser";
 import passport from "passport";
+
 import { env } from "./config/env";
 
 import router from "./routes/app";
+import jwtStrategy from "./config/passport";
 
 const app = express();
 // logger
@@ -12,8 +13,8 @@ const app = express();
 // http security
 app.use(helmet());
 
-// parse cookie
-// app.use(cookieParser());
+// jwt passport
+passport.use("jwt", jwtStrategy);
 
 // parse json in request body
 app.use(express.json());

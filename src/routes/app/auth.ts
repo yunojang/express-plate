@@ -1,17 +1,12 @@
 import express from "express";
+
 import validate from "@/middlewares/validate";
-
-import { register } from "@/controllers/authController";
-
 import { CraeteUserBody } from "@/validations/user";
+import { register } from "@/controllers/authController";
 
 const authRouter = express.Router();
 
-authRouter.post(
-    "/login"
-    // validate(),
-    // controller
-);
+authRouter.post("/login");
 
 authRouter.post("/register", validate(CraeteUserBody), register);
 

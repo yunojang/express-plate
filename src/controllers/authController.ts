@@ -2,7 +2,7 @@ import { Handler } from "express";
 
 import { User } from "@/models/User";
 import { CraeteUserBody } from "@/validations/user";
-import { userService } from "@/service";
+import { tokenService, userService } from "@/service";
 
 export const register: Handler = async (req, res) => {
     const { age, email, gender, password } = req.body as CraeteUserBody;
@@ -13,6 +13,11 @@ export const register: Handler = async (req, res) => {
     user.password = password;
     user.age = age;
 
-    const result = await userService.create(user);
-    return res.send(result);
+    const createdUser = await userService.create(user);
+    const token = tokenService.generateToken(createdUser.id);
+
+    return res.send({
+        user: createdUser,
+        token,
+    });
 };

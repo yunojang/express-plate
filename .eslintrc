@@ -15,6 +15,18 @@
         "import/extensions": "off",
         "import/no-unresolved": "off",
         "import/prefer-default-export": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "max-classes-per-file": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "func-names": "off",
+        "no-plusplus": "off",
+        "class-methods-use-this": "off",
+        "consistent-return": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
     }
 }

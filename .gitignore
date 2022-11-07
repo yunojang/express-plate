@@ -6,3 +6,9 @@ dist
 
 # log
 *.log
+
+# code setting
+.vscode
+
+# env
+.env

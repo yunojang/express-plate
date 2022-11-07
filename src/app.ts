@@ -1,6 +1,12 @@
 import express from "express";
 import helmet from "helmet";
-import cookieParser from "cookie-parser";
+import passport from "passport";
+import cors from "cors";
+
+import { env } from "./config/env";
+
+import router from "./routes/app";
+import jwtStrategy from "./config/passport";
 
 const app = express();
 // logger
@@ -8,13 +14,20 @@ const app = express();
 // http security
 app.use(helmet());
 
-// parse cookie
-app.use(cookieParser());
+// cors
+app.use(cors());
+app.options("*", cors());
 
-// parse json, request body
+// jwt passport
+passport.use("jwt", jwtStrategy);
+
+// parse json in request body
 app.use(express.json());
 
+// passport setting for jwt authentication
+app.use(passport.initialize());
+
 // rest api route
-// app.use('/app', route)
+app.use(env.app.routePrefix, router);
 
 export default app;

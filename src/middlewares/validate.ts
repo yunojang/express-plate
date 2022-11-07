@@ -20,6 +20,7 @@ const validate =
                 res.statusCode = StatusCodes.BAD_REQUEST;
                 return next(new ApiError(errors));
             }
+
             return next();
         });
     };

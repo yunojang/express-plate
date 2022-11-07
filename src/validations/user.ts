@@ -3,7 +3,7 @@ import {
     IsIn,
     IsNotEmpty,
     IsOptional,
-    Length,
+    // Length,
     Max,
     Min,
 } from "class-validator";
@@ -13,9 +13,9 @@ class BaseUser {
     @IsNotEmpty()
     public email?: string;
 
-    @Length(3, 10)
-    @IsOptional()
-    public name?: string;
+    // @Length(3, 10)
+    // @IsOptional()
+    // public name?: string;
 
     @IsIn(["male", "female"])
     @IsOptional()
@@ -32,9 +32,10 @@ export class CraeteUserBody extends BaseUser {
     public password?: string;
 }
 
+// test
 function Body(): ParameterDecorator {
     return function (target, key, idx) {
-        console.log(target, key, idx);
+        // console.log(target, key, idx);
     };
 }
 

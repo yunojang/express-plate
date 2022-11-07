@@ -1,22 +1,28 @@
-import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    Entity,
+    // PrimaryGeneratedColumn,
+    ObjectIdColumn,
+} from "typeorm";
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn("uuid")
+    @ObjectIdColumn()
     id!: string;
 
-    @IsNotEmpty()
     @Column()
     email?: string;
 
-    @IsNotEmpty()
     @Column()
     password?: string;
 
-    @Column()
+    @Column({
+        nullable: true,
+    })
     gender?: string;
 
-    @Column()
+    @Column({
+        nullable: true,
+    })
     age?: number;
 }

@@ -2,7 +2,7 @@ import { DataSource, DataSourceOptions } from "typeorm";
 import { env } from "./env";
 
 const {
-    db: { type, url },
+    db: { type, database, url },
     app: {
         dirs: { entities },
     },
@@ -10,6 +10,7 @@ const {
 
 const options: DataSourceOptions = {
     type: type as any,
+    database,
     url,
     entities,
     logging: true,
@@ -18,3 +19,5 @@ const options: DataSourceOptions = {
 };
 
 export const AppDataSource = new DataSource(options);
+
+// AppDataSource.manager.save(User, { name: "admin", password: "admin" });

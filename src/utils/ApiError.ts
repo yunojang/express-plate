@@ -4,9 +4,10 @@ import { ValidationError } from "class-validator";
 // import { StatusCodes } from "http-status-codes";
 
 export class ApiError extends Error {
-    // constructor(msg: string) {
-    //     super(msg);
-    // }
+    constructor(msg: string) {
+        super(msg);
+        this.name = "ApiError";
+    }
 }
 
 export default class ValidateError extends ApiError {

@@ -5,9 +5,14 @@ import {
     // PrimaryGeneratedColumn,
     ObjectIdColumn,
 } from "typeorm";
+import { ModelBase } from "@/utils/ModelBase";
 
 @Entity()
-export class User {
+export class User extends ModelBase {
+    public comparePassword(password: string) {
+        return this.password === password;
+    }
+
     @ObjectIdColumn()
     id!: ObjectId;
 

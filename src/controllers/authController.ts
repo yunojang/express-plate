@@ -1,10 +1,13 @@
 import { Handler } from "express";
+import { StatusCodes } from "http-status-codes";
 
 import { User } from "@/models/User";
-import { CraeteUserBody } from "@/validations/user";
 import { tokenService, userService } from "@/service";
+
+import { CraeteUserBody } from "@/validations/user";
 import { LoginBody } from "@/validations/auth";
-import { getUserByEmail } from "@/service/UserService";
+import { loginWithEmailAndPassword } from "@/service/AuthService";
+import { generateToken } from "@/service/TokenService";
 
 export const register: Handler = async (req, res) => {
     const { age, email, gender, password } = req.body as CraeteUserBody;
@@ -15,20 +18,40 @@ export const register: Handler = async (req, res) => {
     user.password = password;
     user.age = age;
 
-    const createdUser = await userService.create(user);
-    const token = tokenService.generateToken(createdUser.id);
+    try {
+        const createdUser = await userService.create(user);
+        const token = tokenService.generateToken(createdUser.id);
+        return res.send({
+            user: createdUser,
+            token,
+        });
+    } catch (err) {
+        const status = StatusCodes.INTERNAL_SERVER_ERROR;
 
-    return res.send({
-        user: createdUser,
-        token,
-    });
+        res.status(status);
+        res.send({ err, status });
+    }
 };
 
 export const login: Handler = async (req, res) => {
     const { email, password } = req.body as LoginBody;
-    const user = getUserByEmail(email as string);
 
-    // if (!user || ) {
+    try {
+        const user = await loginWithEmailAndPassword(
+            email as string,
+            password as string
+        );
+        const token = generateToken(user.id);
 
-    // }
+        return res.send({ user, token });
+    } catch (err: any) {
+        const status = StatusCodes.UNAUTHORIZED;
+
+        res.status(status);
+        res.send({ err: err.toString(), status });
+    }
 };
+
+// export const me: Handler = async (req, res) => {
+
+// }

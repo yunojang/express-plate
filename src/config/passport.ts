@@ -11,7 +11,7 @@ const jwtOptions = {
 
 const verify: VerifyCallback = (payload, done) => {
     userRepository
-        .findOneBy({ id: payload.id.data })
+        .findOneBy({ id: payload.id })
         .then((user) => {
             console.log("user", user);
 

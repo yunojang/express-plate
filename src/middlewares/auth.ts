@@ -15,6 +15,7 @@ export const auth: Handler = async (req, res, next) => {
                 reject(new ApiError("Unauthorized"));
             }
 
+            req.body = user;
             resolve(user);
         })(req, res);
     })

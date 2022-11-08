@@ -19,7 +19,10 @@ export const auth: Handler = async (req, res, next) => {
         })(req, res);
     })
         .then(() => next())
-        .catch((err) =>
-            res.send({ err: err.toString(), status: StatusCodes.UNAUTHORIZED })
-        );
+        .catch((err) => {
+            const status = StatusCodes.UNAUTHORIZED;
+
+            res.status(status);
+            res.send({ err: err.toString(), status });
+        });
 };

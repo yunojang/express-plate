@@ -11,7 +11,6 @@ export const auth: Handler = async (req, res, next) => {
     return new Promise((resolve, reject) => {
         passport.authenticate("jwt", { session: false }, (err, user, info) => {
             if (err || info || !user) {
-                res.status(StatusCodes.UNAUTHORIZED);
                 reject(new ApiError("Unauthorized"));
             }
 
@@ -20,5 +19,7 @@ export const auth: Handler = async (req, res, next) => {
         })(req, res);
     })
         .then(() => next())
-        .catch((err) => next(err));
+        .catch((err) =>
+            res.send({ err: err.toString(), status: StatusCodes.UNAUTHORIZED })
+        );
 };

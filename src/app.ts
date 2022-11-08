@@ -24,9 +24,6 @@ passport.use("jwt", jwtStrategy);
 // parse json in request body
 app.use(express.json());
 
-// passport setting for jwt authentication
-app.use(passport.initialize());
-
 // rest api route
 app.use(env.app.routePrefix, router);
 

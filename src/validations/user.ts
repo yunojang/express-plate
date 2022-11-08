@@ -32,17 +32,22 @@ export class CraeteUserBody extends BaseUser {
     public password?: string;
 }
 
+export class GetUserWithId {
+    @IsNotEmpty()
+    public id!: string;
+}
+
 // test
-function Body(): ParameterDecorator {
-    return function (target, key, idx) {
-        // console.log(target, key, idx);
-    };
-}
+// function Body(): ParameterDecorator {
+//     return function (target, key, idx) {
+//         // console.log(target, key, idx);
+//     };
+// }
 
-class UserController {
-    service = null;
+// class UserController {
+//     service = null;
 
-    create(@Body() body: CraeteUserBody) {
-        return this.service;
-    }
-}
+//     create(@Body() body: CraeteUserBody) {
+//         return this.service;
+//     }
+// }

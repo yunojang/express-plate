@@ -1,7 +1,7 @@
 // import passport from "passport";
 import { Strategy, ExtractJwt, VerifyCallback } from "passport-jwt";
 import { env } from "@/config/env";
-import { userRepository } from "@/repositories";
+import { userService } from "@/service";
 
 // passport jwt config
 const jwtOptions = {
@@ -10,8 +10,8 @@ const jwtOptions = {
 };
 
 const verify: VerifyCallback = (payload, done) => {
-    userRepository
-        .findOneBy({ id: payload.id })
+    userService
+        .getUserById(payload.id)
         .then((user) => {
             console.log("user", user);
 

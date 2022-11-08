@@ -20,7 +20,7 @@ export const register: Handler = async (req, res) => {
 
     try {
         const createdUser = await userService.create(user);
-        const token = tokenService.generateToken(createdUser.id);
+        const token = tokenService.generateToken(createdUser._id);
         return res.send({
             user: createdUser,
             token,
@@ -41,7 +41,7 @@ export const login: Handler = async (req, res) => {
             email as string,
             password as string
         );
-        const token = generateToken(user.id);
+        const token = generateToken(user._id);
 
         return res.send({ user, token });
     } catch (err: any) {

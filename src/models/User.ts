@@ -1,10 +1,5 @@
 import { ObjectId } from "mongodb";
-import {
-    Column,
-    Entity,
-    // PrimaryGeneratedColumn,
-    ObjectIdColumn,
-} from "typeorm";
+import { Column, Entity, ObjectIdColumn } from "typeorm";
 import { ModelBase } from "@/utils/ModelBase";
 
 @Entity()
@@ -14,7 +9,7 @@ export class User extends ModelBase {
     }
 
     @ObjectIdColumn()
-    id!: ObjectId;
+    _id!: any;
 
     @Column()
     email?: string;

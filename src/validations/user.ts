@@ -1,5 +1,4 @@
 import {
-    IsEmail,
     IsIn,
     IsNotEmpty,
     IsOptional,
@@ -9,7 +8,6 @@ import {
 } from "class-validator";
 
 class BaseUser {
-    @IsEmail()
     @IsNotEmpty()
     public email?: string;
 

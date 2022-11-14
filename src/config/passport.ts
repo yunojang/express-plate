@@ -13,8 +13,6 @@ const verify: VerifyCallback = (payload, done) => {
     userService
         .getUserById(payload.id)
         .then((user) => {
-            console.log("user", user);
-
             if (!user) {
                 return done(null, false);
             }

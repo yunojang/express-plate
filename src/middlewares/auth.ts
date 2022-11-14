@@ -14,14 +14,13 @@ export const auth: Handler = async (req, res, next) => {
                 reject(new ApiError("Unauthorized"));
             }
 
-            req.body = user;
-            resolve(user);
+            req.user = user;
+            resolve(1);
         })(req, res);
     })
         .then(() => next())
         .catch((err) => {
             const status = StatusCodes.UNAUTHORIZED;
-
             res.status(status);
             res.send({ err: err.toString(), status });
         });

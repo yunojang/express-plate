@@ -9,6 +9,16 @@ import { LoginBody } from "@/validations/auth";
 import { loginWithEmailAndPassword } from "@/service/AuthService";
 import { generateToken } from "@/service/TokenService";
 
+export const me: Handler = (req, res, next) => {
+    if (!req.user) {
+        return next("USER null");
+    }
+
+    return res.send({
+        user: req.user,
+    });
+};
+
 export const register: Handler = async (req, res) => {
     const { age, email, gender, password } = req.body as CraeteUserBody;
 

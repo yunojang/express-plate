@@ -6,12 +6,11 @@ import { auth } from "@/middlewares/auth";
 import { CraeteUserBody } from "@/validations/user";
 import { LoginBody } from "@/validations/auth";
 
-import { login, register } from "@/controllers/authController";
-import { loop } from "@/controllers/commonController";
+import { login, me, register } from "@/controllers/authController";
 
 const authRouter = express.Router();
 
-authRouter.get("/me", auth, loop);
+authRouter.get("/me", auth, me);
 authRouter.post("/login", validate(LoginBody), login);
 authRouter.post("/register", validate(CraeteUserBody), register);
 

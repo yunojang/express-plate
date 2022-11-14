@@ -1,7 +1,7 @@
-import { IsEmail, IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 
 export class LoginBody {
-    @IsEmail()
+    @IsNotEmpty()
     email?: string;
 
     @IsNotEmpty()

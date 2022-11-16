@@ -23,6 +23,10 @@ class BaseUser {
     @Max(120)
     @IsOptional()
     public age?: number;
+
+    @IsOptional()
+    @IsIn(["text", "voice", "video"])
+    public matchSet?: string;
 }
 
 export class CraeteUserBody extends BaseUser {
@@ -30,22 +34,9 @@ export class CraeteUserBody extends BaseUser {
     public password?: string;
 }
 
+export class UpdateUserBody extends BaseUser {}
+
 export class GetUserWithId {
     @IsNotEmpty()
     public id!: string;
 }
-
-// test
-// function Body(): ParameterDecorator {
-//     return function (target, key, idx) {
-//         // console.log(target, key, idx);
-//     };
-// }
-
-// class UserController {
-//     service = null;
-
-//     create(@Body() body: CraeteUserBody) {
-//         return this.service;
-//     }
-// }

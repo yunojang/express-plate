@@ -1,6 +1,7 @@
-import { ObjectId } from "mongodb";
 import { Column, Entity, ObjectIdColumn } from "typeorm";
 import { ModelBase } from "@/utils/ModelBase";
+
+export type MatchType = "text" | "voice" | "video";
 
 @Entity()
 export class User extends ModelBase {
@@ -26,4 +27,7 @@ export class User extends ModelBase {
         nullable: true,
     })
     age?: number;
+
+    @Column({ default: "text", nullable: true })
+    matchSet?: MatchType;
 }

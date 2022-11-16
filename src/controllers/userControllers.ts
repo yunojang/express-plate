@@ -4,6 +4,7 @@ import { User } from "@/models/User";
 import { CraeteUserBody } from "@/validations/user";
 import { userService } from "@/service";
 
+// replaced register
 export const createUser: Handler = async (req, res) => {
     // call createuser service
     const { age, email, gender, password } = req.body as CraeteUserBody;
@@ -28,4 +29,11 @@ export const getUser: Handler = async (req, res) => {
 
     const user = await userService.getUserById(id);
     return res.send(user);
+};
+
+export const updateUser: Handler = async (req, res) => {
+    const { id } = req.params;
+
+    const result = await userService.updateUser(id, req.body);
+    return res.send(result);
 };

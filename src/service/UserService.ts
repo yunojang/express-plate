@@ -21,3 +21,9 @@ export const getUserById = async (id: string) => {
     console.log("Find user by Id =>", id);
     return userRepository.findOneBy({ _id: new ObjectId(id) });
 };
+
+export const updateUser = async (id: string, newUser: User) => {
+    console.log("update user =>", id, "by =>", newUser);
+
+    return userRepository.update(id, newUser);
+};

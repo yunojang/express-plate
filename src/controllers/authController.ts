@@ -61,7 +61,3 @@ export const login: Handler = async (req, res) => {
         res.send({ err: err.toString(), status });
     }
 };
-
-// export const me: Handler = async (req, res) => {
-
-// }
